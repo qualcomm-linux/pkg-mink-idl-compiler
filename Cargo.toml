@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "idlc",
+    "idlc_ast",
+    "idlc_ast_passes",
+    "idlc_mir",
+    "idlc_mir_passes",
+    "idlc_codegen",
+    "idlc_codegen_c",
+    "idlc_codegen_cpp",
+    "idlc_codegen_java",
+    "idlc_codegen_rust",
+    "idlc_errors"
+]
+
+exclude = [
+  "tests"
+]
+
+[profile.opt]
+inherits = "release"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[workspace.package]
+version = "0.2.4"
