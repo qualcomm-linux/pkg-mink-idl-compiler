@@ -1,0 +1,21 @@
+[package]
+name = "idlc"
+version = "0.2.4"
+edition = "2021"
+rust-version = "1.81.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+idlc_ast = { path="../idlc_ast" }
+idlc_ast_passes = { path="../idlc_ast_passes" }
+idlc_mir = { path="../idlc_mir" }
+idlc_mir_passes = { path="../idlc_mir_passes" }
+idlc_codegen_c = { path="../idlc_codegen_c" }
+idlc_codegen_cpp = { path="../idlc_codegen_cpp" }
+idlc_codegen_rust = { path="../idlc_codegen_rust" }
+idlc_codegen_java = { path="../idlc_codegen_java" }
+idlc_codegen = { path = "../idlc_codegen" }
+idlc_errors = { path = "../idlc_errors" }
+
+clap = { version = "4.5.4", features = ["derive"] }

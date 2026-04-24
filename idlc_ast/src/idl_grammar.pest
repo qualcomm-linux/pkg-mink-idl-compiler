@@ -1,0 +1,43 @@
+COMMENT_VARIANT_DOUBLESLASH = _{ "//" ~ (!NEWLINE ~ ANY)* }
+COMMENT_VARIANT_ASTERISK    = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+DOCUMENTATION               = @{ "/**" ~ NEWLINE ~ (!"*/" ~ ANY)* ~ "*/" }
+
+WHITESPACE = _{ " " | "\t" | NEWLINE }
+COMMENT    = ${ DOCUMENTATION | COMMENT_VARIANT_ASTERISK | COMMENT_VARIANT_DOUBLESLASH }
+
+path    = @{ (!".idl" ~ ANY)+ ~ ".idl" }
+include = ${ "include" ~ WHITESPACE+ ~ "\"" ~ path ~ "\"" }
+
+ident          = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+integer_type   = @{ "u"? ~ "int" ~ ("8" | "16" | "32" | "64") }
+float_type     = @{ "float" ~ ("32" | "64") }
+primitive_type = @{ (integer_type | float_type) }
+value          = @{ ("-"? ~ "0x" ~ ASCII_HEX_DIGIT+ | "-"? ~ ASCII_DIGIT+ ~ ("." ~ ASCII_DIGIT+)?) }
+
+array_size      = @{ ASCII_DIGIT+ }
+bounded_array   =  { "[" ~ array_size ~ "]" }
+unbounded_array =  { "[" ~ "]" }
+
+struct_field   =  { (primitive_type | ident) ~ bounded_array? ~ ident ~ ";" }
+struct_keyword = @{ "struct" ~ WHITESPACE }
+struct         =  { struct_keyword ~ (!"interface" ~ ident) ~ "{" ~ (struct_field)+ ~ "};" }
+
+const_keyword = @{ "const" ~ WHITESPACE }
+const         =  { const_keyword ~ primitive_type ~ ident ~ "=" ~ value ~ ";" }
+
+supported_attributes = @{ "optional" }
+attribute            = ${ "#[" ~ supported_attributes ~ "]" }
+param_type           =  { ((ident | "interface") ~ bounded_array) | ((primitive_type | !"interface" ~ ident) ~ unbounded_array) | primitive_type | ident | "interface" | "buffer" }
+mutability           = @{ ("in" | "out") }
+param                =  { mutability ~ param_type ~ ident }
+function_keyword     = @{ (WHITESPACE* ~ attribute ~ WHITESPACE)* ~ WHITESPACE* ~ "method" ~ WHITESPACE }
+function             =  { function_keyword ~ ident ~ "(" ~ param? ~ ("," ~ param)* ~ ");" }
+
+error_keyword = @{ "error" ~ WHITESPACE }
+error         =  { error_keyword ~ ident ~ ";" }
+
+iname             =  { ident ~ (":" ~ ident)? }
+interface_keyword = @{ "interface" ~ WHITESPACE }
+interface         =  { interface_keyword ~ iname ~ "{" ~ (function | const | error)* ~ "};" }
+
+idl = { SOI ~ include* ~ (const | struct | interface)* ~ EOI }

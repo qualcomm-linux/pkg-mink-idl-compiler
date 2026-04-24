@@ -8,12 +8,10 @@ Index: mink-idl-compiler/idlc_codegen_rust/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_codegen_rust/Cargo.toml
 +++ mink-idl-compiler/idlc_codegen_rust/Cargo.toml
-@@ -10,7 +10,7 @@ convert_case = ">= 0.6.0, < 0.12.0"
+@@ -10,5 +10,5 @@ convert_case = "0.6.0"
  idlc_codegen = { path="../idlc_codegen" }
  idlc_errors = {path = "../idlc_errors" }
  idlc_mir = { path="../idlc_mir" }
 -prettyplease = "0.2.19"
 +prettyplease = "0.2.6"
  syn = { version = "2.0.60", features = ["parsing"], default-features = false }
- 
- [package.metadata.workspaces]

@@ -8,12 +8,9 @@ Index: mink-idl-compiler/idlc_codegen_rust/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_codegen_rust/Cargo.toml
 +++ mink-idl-compiler/idlc_codegen_rust/Cargo.toml
-@@ -11,7 +11,7 @@ idlc_codegen = { path="../idlc_codegen"
+@@ -11,4 +11,4 @@ idlc_codegen = { path="../idlc_codegen"
  idlc_errors = {path = "../idlc_errors" }
  idlc_mir = { path="../idlc_mir" }
  prettyplease = "0.2.6"
 -syn = { version = "2.0.60", features = ["parsing"], default-features = false }
 +syn = { version = "2.0.48", features = ["parsing"], default-features = false }
- 
- [package.metadata.workspaces]
- independent = true
