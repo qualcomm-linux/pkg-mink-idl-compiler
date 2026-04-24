@@ -1,0 +1,19 @@
+Description: Loosen log version
+Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Origin: other, Debian packaging
+Last-Update: 2026-04-22
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: mink-idl-compiler/idlc_errors/Cargo.toml
+===================================================================
+--- mink-idl-compiler.orig/idlc_errors/Cargo.toml
++++ mink-idl-compiler/idlc_errors/Cargo.toml
+@@ -7,7 +7,7 @@ edition = "2021"
+ 
+ [dependencies]
+ env_logger = ">= 0.10.0, < 0.12.0"
+-log = "0.4.21"
++log = "0.4.20"
+ 
+ [package.metadata.workspaces]
+ independent = true

@@ -1,5 +1,5 @@
-template-package-name (1.0.0-1) UNRELEASED; urgency=medium
+mink-idl-compiler (1.0.0-1) UNRELEASED; urgency=medium
 
-  * Populate.
+  * Initial packaging.
 
- -- Github Service Bot <githubservice@qti.qualcomm.com>  Tue, 07 Oct 2025 14:21:59 -0700
+ -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Thu, 30 Mar 2026 09:05:36 +0000

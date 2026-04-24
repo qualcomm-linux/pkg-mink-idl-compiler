@@ -1,0 +1,19 @@
+Description: Loosen clap version requirement
+Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Origin: other, Debian packaging
+Last-Update: 2026-04-22
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: mink-idl-compiler/idlc/Cargo.toml
+===================================================================
+--- mink-idl-compiler.orig/idlc/Cargo.toml
++++ mink-idl-compiler/idlc/Cargo.toml
+@@ -18,7 +18,7 @@ idlc_codegen_java = { path="../idlc_code
+ idlc_codegen = { path = "../idlc_codegen" }
+ idlc_errors = { path = "../idlc_errors" }
+ 
+-clap = { version = "4.5.4", features = ["derive"] }
++clap = { version = ">= 4.4.18, < 4.6.0", features = ["derive"] }
+ 
+ [package.metadata.workspaces]
+ independent = true

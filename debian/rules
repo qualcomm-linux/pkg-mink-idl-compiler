@@ -1,4 +1,21 @@
 #!/usr/bin/make -f
 
+# Use the debian cargo wrapper
+export CARGO_PATH := /usr/share/cargo/bin/cargo
+
 %:
 	dh $@
+
+override_dh_auto_configure:
+	mkdir -p .cargo/
+	cp debian/config.toml .cargo/config.toml
+	dh_auto_configure
+
+override_dh_auto_build:
+	$(CARGO_PATH) build --release --offline
+
+override_dh_auto_install:
+	install -d $(CURDIR)/debian/tmp/usr/bin
+	install -d $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/mink/bin
+	install -m 0755 target/release/idlc debian/tmp/usr/bin/mink-idlc
+	install -m 0755 target/release/idlc debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/mink/bin/

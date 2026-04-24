@@ -1,0 +1,20 @@
+Description: Loosen rustc version from 1.81.0 in upstream to build
+for Ubuntu Noble which provides only rustc-1.75.0 in Noble main.
+Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Origin: other, Debian packaging
+Last-Update: 2026-04-22
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: mink-idl-compiler/idlc/Cargo.toml
+===================================================================
+--- mink-idl-compiler.orig/idlc/Cargo.toml
++++ mink-idl-compiler/idlc/Cargo.toml
+@@ -2,7 +2,7 @@
+ name = "idlc"
+ version = "0.2.4"
+ edition = "2021"
+-rust-version = "1.81.0"
++rust-version = "1.75.0"
+ 
+ # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+ 

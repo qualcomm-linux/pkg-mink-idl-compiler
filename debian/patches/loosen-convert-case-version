@@ -1,0 +1,32 @@
+Description: Loose convert-case version
+Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Origin: other, Debian packaging
+Last-Update: 2026-04-22
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: mink-idl-compiler/idlc_codegen_java/Cargo.toml
+===================================================================
+--- mink-idl-compiler.orig/idlc_codegen_java/Cargo.toml
++++ mink-idl-compiler/idlc_codegen_java/Cargo.toml
+@@ -6,7 +6,7 @@ edition = "2021"
+ # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+ 
+ [dependencies]
+-convert_case = "0.6.0"
++convert_case = ">= 0.6.0, < 0.12.0"
+ idlc_codegen = { path="../idlc_codegen" }
+ idlc_mir = { path="../idlc_mir" }
+ 
+Index: mink-idl-compiler/idlc_codegen_rust/Cargo.toml
+===================================================================
+--- mink-idl-compiler.orig/idlc_codegen_rust/Cargo.toml
++++ mink-idl-compiler/idlc_codegen_rust/Cargo.toml
+@@ -6,7 +6,7 @@ edition = "2021"
+ # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+ 
+ [dependencies]
+-convert_case = "0.6.0"
++convert_case = ">= 0.6.0, < 0.12.0"
+ idlc_codegen = { path="../idlc_codegen" }
+ idlc_errors = {path = "../idlc_errors" }
+ idlc_mir = { path="../idlc_mir" }
