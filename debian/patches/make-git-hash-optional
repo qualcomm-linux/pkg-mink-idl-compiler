@@ -10,7 +10,7 @@ Index: mink-idl-compiler/idlc/build.rs
 ===================================================================
 --- mink-idl-compiler.orig/idlc/build.rs
 +++ mink-idl-compiler/idlc/build.rs
-@@ -6,8 +6,15 @@ use std::process::Command;
+@@ -6,8 +6,14 @@ use std::process::Command;
  pub fn main() {
      let output = Command::new("git")
          .args(["describe", "--always", "--abbrev=40", "--dirty"])
@@ -21,20 +21,19 @@ Index: mink-idl-compiler/idlc/build.rs
 +
 +    let git_hash = match output {
 +        Ok(output) if output.status.success() => {
-+            std::str::from_utf8(&output.stdout)
-+		.unwrap()
-+		.to_string()
++            std::str::from_utf8(&output.stdout).unwrap().to_string()
 +        }
 +        _ => "unknown".to_string(),
-+    };  
++    };
++
      println!("cargo:rustc-env=GIT_HASH={git_hash}");
  }
-Index: mink-idl-compiler/idlc/src/cli.rs
+Index: mink-idl-compiler/idlc/src/main.rs
 ===================================================================
---- mink-idl-compiler.orig/idlc/src/cli.rs
-+++ mink-idl-compiler/idlc/src/cli.rs
-@@ -2,12 +2,18 @@
- // SPDX-License-Identifier: BSD-3-Clause
+--- mink-idl-compiler.orig/idlc/src/main.rs
++++ mink-idl-compiler/idlc/src/main.rs
+@@ -25,12 +25,18 @@ use idlc_mir_passes::{interface_verifier
+ use idlc_codegen::{Generator, SplitInvokeGenerator};
  
  fn long_version() -> &'static str {
 -    format!(

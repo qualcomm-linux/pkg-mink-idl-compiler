@@ -8,12 +8,9 @@ Index: mink-idl-compiler/idlc_errors/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_errors/Cargo.toml
 +++ mink-idl-compiler/idlc_errors/Cargo.toml
-@@ -7,7 +7,7 @@ edition = "2021"
+@@ -7,4 +7,4 @@ edition = "2021"
  
  [dependencies]
  env_logger = ">= 0.10.0, < 0.12.0"
 -log = "0.4.21"
 +log = "0.4.20"
- 
- [package.metadata.workspaces]
- independent = true

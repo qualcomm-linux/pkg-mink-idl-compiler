@@ -8,12 +8,9 @@ Index: mink-idl-compiler/idlc/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc/Cargo.toml
 +++ mink-idl-compiler/idlc/Cargo.toml
-@@ -18,7 +18,7 @@ idlc_codegen_java = { path="../idlc_code
+@@ -18,4 +18,4 @@ idlc_codegen_java = { path="../idlc_code
  idlc_codegen = { path = "../idlc_codegen" }
  idlc_errors = { path = "../idlc_errors" }
  
 -clap = { version = "4.5.4", features = ["derive"] }
 +clap = { version = ">= 4.4.18, < 4.6.0", features = ["derive"] }
- 
- [package.metadata.workspaces]
- independent = true

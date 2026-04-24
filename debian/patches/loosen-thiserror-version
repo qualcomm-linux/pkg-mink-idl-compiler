@@ -8,15 +8,12 @@ Index: mink-idl-compiler/idlc_ast/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_ast/Cargo.toml
 +++ mink-idl-compiler/idlc_ast/Cargo.toml
-@@ -12,7 +12,7 @@ description = "AST structure for IDL; co
+@@ -12,4 +12,4 @@ description = "AST structure for IDL; co
  idlc_errors = {path = "../idlc_errors" }
  pest = "2.7.9"
  pest_derive = "2.7.9"
 -thiserror = "1.0.59"
 +thiserror = "1.0.50"
- 
- [package.metadata.workspaces]
- independent = true
 Index: mink-idl-compiler/idlc_ast_passes/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_ast_passes/Cargo.toml
@@ -34,12 +31,9 @@ Index: mink-idl-compiler/idlc_mir_passes/Cargo.toml
 ===================================================================
 --- mink-idl-compiler.orig/idlc_mir_passes/Cargo.toml
 +++ mink-idl-compiler/idlc_mir_passes/Cargo.toml
-@@ -10,7 +10,7 @@ idlc_ast = { path = "../idlc_ast" }
+@@ -10,4 +10,4 @@ idlc_ast = { path = "../idlc_ast" }
  idlc_ast_passes = { path="../idlc_ast_passes" }
  idlc_errors = {path = "../idlc_errors" }
  idlc_mir = { path="../idlc_mir" }
 -thiserror = "1.0.59"
 +thiserror = "1.0.50"
- 
- [package.metadata.workspaces]
- independent = true
