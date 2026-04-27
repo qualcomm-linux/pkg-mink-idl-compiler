@@ -1,4 +1,4 @@
-mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-1) unstable; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Initial packaging.
@@ -6,4 +6,4 @@ mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
   [ GitHub Service Bot ]
   * New upstream release
 
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Fri, 24 Apr 2026 20:37:07 +0000
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Mon, 27 Apr 2026 07:00:35 +0000
