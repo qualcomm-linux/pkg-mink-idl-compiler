@@ -1,8 +1,9 @@
-mink-idl-compiler (0.2.4-3) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-3) unstable; urgency=medium
 
+  [ Abhinaba Rakshit ]
   * Initial commit
 
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 04 May 2026 09:37:10 +0000
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Wed, 06 May 2026 11:06:30 +0000
 
 mink-idl-compiler (0.2.4-2) unstable; urgency=medium
 
