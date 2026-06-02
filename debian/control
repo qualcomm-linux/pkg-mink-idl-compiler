@@ -11,9 +11,9 @@ Build-Depends:
 	rustc:native (>= 1.75.0),
 	libstd-rust-dev,
 	librust-clap-4+default-dev (>= 4.4.18-~~),
-	librust-clap-4+default-dev (<< 4.6.0-~~),
+	librust-clap-4+default-dev (<< 4.6.2-~~),
 	librust-clap-4+derive-dev (>= 4.4.18-~~),
-	librust-clap-4+derive-dev (<< 4.6.0-~~),
+	librust-clap-4+derive-dev (<< 4.6.2-~~),
 	librust-pest-2+default-dev (>= 2.7.4-~~),
 	librust-pest-2+default-dev (<< 2.9.0-~~),
 	librust-pest-derive-2+default-dev (>= 2.7.4-~~),
@@ -29,6 +29,8 @@ Build-Depends:
 	librust-serial-test-dev,
 	librust-serde-test-dev
 Homepage: https://github.com/quic/mink-idl-compiler
+Vcs-Git: https://github.com/qualcomm-linux/pkg-mink-idl-compiler -b debian/qcom-next
+Vcs-Browser: https://github.com/qualcomm-linux/pkg-mink-idl-compiler
 
 Package: mink-idl-compiler
 Architecture: arm64
@@ -37,5 +39,5 @@ Description: Mink IDL compile
  Compiler for MINK Interface Definition Language files used to generate
  IPC interface code for secure, cross-domain communication.
  .
- This package contains the binary executable idlc.
+ This package contains the binary executable mink-idlc.
 Depends: ${misc:Depends}

@@ -17,6 +17,3 @@ override_dh_auto_build:
 override_dh_auto_install:
 	install -d $(CURDIR)/debian/tmp/usr/bin
 	install -m 0755 target/release/idlc debian/tmp/usr/bin/mink-idlc
-
-override_dh_link:
-	dh_link usr/bin/mink-idlc usr/lib/$(DEB_HOST_MULTIARCH)/mink/bin/idlc
