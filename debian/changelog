@@ -1,8 +1,12 @@
-mink-idl-compiler (0.2.4-8~) UNRELEASED; urgency=medium
+mink-idl-compiler (0.3.0-1) UNRELEASED; urgency=medium
 
+  [ Abhinaba Rakshit ]
   * WIP — update changelog before next release
 
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 25 May 2026 09:12:39 +0000
+  [ GitHub Service Bot ]
+  * New upstream release
+
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Tue, 02 Jun 2026 18:02:32 +0000
 
 mink-idl-compiler (0.2.4-7) resolute; urgency=medium
 
