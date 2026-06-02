@@ -1,6 +1,6 @@
 [package]
 name = "idlc_errors"
-version = "0.2.4"
+version = "0.3.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 env_logger = "0.11.3"
 log = "0.4.21"
+
+[package.metadata.workspaces]
+independent = true

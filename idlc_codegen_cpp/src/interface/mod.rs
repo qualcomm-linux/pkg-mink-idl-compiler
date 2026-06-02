@@ -1,10 +1,12 @@
 // Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
 // SPDX-License-Identifier: BSD-3-Clause
 
-use idlc_mir::{Interface, InterfaceNode};
+use idlc_codegen::keywords::invoke::VERSION_FUNC_NAME;
+use idlc_mir::{APIVersion, Interface, InterfaceNode};
 
 mod functions;
 
+use idlc_codegen_c::interface::variable_names::invoke::{ARGS, COUNTS, INDENT, OP_CODE, OP_PREFIX};
 use idlc_codegen_c::types::{change_const_primitive, change_primitive};
 
 pub fn emit_interface_impl(interface: &Interface) -> String {
@@ -17,71 +19,33 @@ pub fn emit_interface_impl(interface: &Interface) -> String {
     let mut func_titles = String::new();
     let mut implementations = String::new();
 
-    // need to have all of the base-class functions, error-codes and const values
-    interface.iter().skip(1).for_each(|iface| {
-        base_iface.push_str(&format!("I{} ", &iface.ident.to_string()));
-        iface.nodes.iter().for_each(|node| match node {
-            InterfaceNode::Const(c) => {
-                constants.push_str(&format!(
-                    r#"
+    // A closure to hold logic for the base class(es) and the root class
+    let mut process_intf_node = |node: &InterfaceNode, is_root: bool| match node {
+        InterfaceNode::Const(c) => {
+            constants.push_str(&format!(
+                r#"
     static constexpr {} {} = {}({});"#,
-                    change_primitive(c.r#type),
-                    c.ident,
-                    change_const_primitive(c.r#type),
-                    c.value
-                ));
-            }
-            InterfaceNode::Error(e) => {
-                errors.push_str(&format!(
-                    r#"
+                change_primitive(c.r#type),
+                c.ident,
+                change_const_primitive(c.r#type),
+                c.value
+            ));
+        }
+        InterfaceNode::Error(e) => {
+            errors.push_str(&format!(
+                r#"
     static constexpr int32_t {} = INT32_C({});"#,
-                    e.ident, e.value
-                ));
-            }
-            InterfaceNode::Function(f) => {
-                let counts = idlc_codegen::counts::Counter::new(f);
-                let signature = functions::signature::Signature::new(f, &counts);
-                let documentation = idlc_codegen::documentation::Documentation::new(
-                    f,
-                    idlc_codegen::documentation::DocumentationStyle::C,
-                );
-
-                implementations.push_str(&functions::implementation::emit(
-                    f,
-                    &documentation,
-                    &counts,
-                    &signature,
-                ));
-            }
-        })
-    });
-
-    for node in &interface.nodes {
-        match node {
-            InterfaceNode::Const(c) => {
-                constants.push_str(&format!(
-                    r#"
-    static constexpr {} {} = {}({});"#,
-                    change_primitive(c.r#type),
-                    c.ident,
-                    change_const_primitive(c.r#type),
-                    c.value
-                ));
-            }
-            InterfaceNode::Error(e) => {
-                errors.push_str(&format!(
-                    r#"
-    static constexpr int32_t {} = INT32_C({});"#,
-                    e.ident, e.value
-                ));
-            }
-            InterfaceNode::Function(f) => {
-                let counts = idlc_codegen::counts::Counter::new(f);
-                let signature = functions::signature::Signature::new(f, &counts);
-                let documentation = idlc_codegen::documentation::Documentation::new(
-                    f,
-                    idlc_codegen::documentation::DocumentationStyle::C,
-                );
+                e.ident, e.value
+            ));
+        }
+        InterfaceNode::Function(f) => {
+            let counts = idlc_codegen::counts::Counter::new(f);
+            let signature = functions::signature::Signature::new(f, &counts);
+            let documentation = idlc_codegen::documentation::Documentation::new(
+                f,
+                idlc_codegen::documentation::DocumentationStyle::C,
+            );
+            if is_root {
                 let mut params = idlc_codegen_c::interface::functions::signature::iter_to_string(
                     signature.params(),
                 );
@@ -95,17 +59,38 @@ pub fn emit_interface_impl(interface: &Interface) -> String {
                 ));
                 op_codes.push_str(&format!(
                     r#"
-    static constexpr ObjectOp OP_{} = {};"#,
+    static constexpr ObjectOp {OP_PREFIX}_{} = {};"#,
                     f.ident, f.id,
                 ));
-                implementations.push_str(&functions::implementation::emit(
-                    f,
-                    &documentation,
-                    &counts,
-                    &signature,
-                ));
             }
+            implementations.push_str(&functions::implementation::emit(
+                f,
+                &documentation,
+                &counts,
+                &signature,
+            ));
         }
+    };
+
+    // Create an iterator over all base class(es) nodes which generates a tuple
+    // for each element to prepare for the common closure
+    let iter_base_nodes = interface
+        .iter()
+        .skip(1)
+        .flat_map(|iface| {
+            base_iface.push_str(&format!("I{} ", &iface.ident.to_string()));
+            iface.nodes.iter()
+        })
+        .map(|node| (node, false));
+
+    // Create an iterator over root class nodes which generates a tuple for each
+    // element to prepare for the common closure
+    let iter_root_nodes = interface.nodes.iter().map(|node| (node, true));
+
+    // For all base class nodes AND THEN root class nodes,
+    for (i_node, is_root_node) in iter_base_nodes.chain(iter_root_nodes) {
+        // process the node with a closure
+        process_intf_node(i_node, is_root_node);
     }
 
     if !base_iface.is_empty() {
@@ -113,11 +98,19 @@ pub fn emit_interface_impl(interface: &Interface) -> String {
         base_iface = format!(": public {first_base_iface} ");
     }
 
+    let interface_version = interface.get_version();
+
     format!(
         r#"
+// '{ident}' interface at version '{interface_version}'
 class {ident};
 class I{ident} {base_iface}{{
   public:{constants}
+    static constexpr uint16_t PATCH_MASK  = 0x0FFF; /* 12 bits */
+    static constexpr uint16_t MINOR_MASK  = 0x03FF; /* 10 bits */
+    static constexpr uint16_t MAJOR_MASK  = 0x03FF; /* 10 bits */
+    static constexpr uint16_t MINOR_SHIFT = UINT8_C(12);
+    static constexpr uint16_t MAJOR_SHIFT = MINOR_SHIFT + UINT8_C(10);
 {errors}
 
     virtual ~I{ident}() {{}}
@@ -132,7 +125,12 @@ class {ident} : public I{ident}, public ProxyBase {{
     {ident}() {{}}
     {ident}(Object impl) : ProxyBase(impl) {{}}
     virtual ~{ident}() {{}}
-
+    virtual int32_t {VERSION_FUNC_NAME}(uint32_t *a_ptr) {{
+        ObjectArg a[] = {{
+            {{.b = (ObjectBuf) {{ a_ptr, sizeof(uint32_t) }} }},
+        }};
+        return invoke(Object_OP_version, a, ObjectCounts_pack(0, 1, 0, 0));
+    }}
 {implementations}
 }};
 
@@ -177,21 +175,32 @@ pub fn emit_interface_invoke(interface: &Interface) -> String {
         }
     }
 
+    let APIVersion { major, minor } = interface.get_version();
+
     format!(
         r#"
 class {ident}ImplBase : protected ImplBase, public I{ident} {{
   public:
     {ident}ImplBase() {{}}
     virtual ~{ident}ImplBase() {{}}
+    static constexpr uint16_t VERSION_MAJOR = UINT16_C({major});
+    static constexpr uint16_t VERSION_MINOR = UINT16_C({minor});
+    static constexpr uint16_t VERSION_PATCH = 0;
+    virtual int32_t {VERSION_FUNC_NAME}(uint32_t *a_ptr) {{
+        *a_ptr = ((VERSION_MAJOR & MAJOR_MASK) << MAJOR_SHIFT) | \
+                 ((VERSION_MINOR & MINOR_MASK) << MINOR_SHIFT) | \
+                  (VERSION_PATCH & PATCH_MASK);
+        return Object_OK;
+    }}
 {weak_declarations}
   protected:
-    virtual int32_t invoke(ObjectOp op, ObjectArg* a, ObjectCounts k) {{
-        switch (ObjectOp_methodID(op)) {{
+{INDENT}virtual int32_t invoke(ObjectOp {OP_CODE}, ObjectArg* {ARGS}, ObjectCounts {COUNTS}) {{
+{INDENT}{INDENT}switch (ObjectOp_methodID({OP_CODE})) {{
 {invokes}
-            default: {{ return Object_ERROR_INVALID; }}
-        }}
-        return Object_ERROR_INVALID;
-    }}
+{INDENT}{INDENT}{INDENT}default: {{ return Object_ERROR_INVALID; }}
+{INDENT}{INDENT}}}
+{INDENT}{INDENT}return Object_ERROR_INVALID;
+{INDENT}}}
 }};
 "#
     )

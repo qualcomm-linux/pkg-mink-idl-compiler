@@ -1,6 +1,6 @@
 [package]
 name = "idlc"
-version = "0.2.4"
+version = "0.3.0"
 edition = "2021"
 rust-version = "1.81.0"
 
@@ -19,3 +19,6 @@ idlc_codegen = { path = "../idlc_codegen" }
 idlc_errors = { path = "../idlc_errors" }
 
 clap = { version = "4.5.4", features = ["derive"] }
+
+[package.metadata.workspaces]
+independent = true
