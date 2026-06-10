@@ -1,57 +1,7 @@
-mink-idl-compiler (0.2.4-8~) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
 
+  [ Abhinaba Rakshit ]
   * WIP — update changelog before next release
-
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 25 May 2026 09:12:39 +0000
-
-mink-idl-compiler (0.2.4-7) resolute; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Mon, 25 May 2026 09:08:24 +0000
-
-mink-idl-compiler (0.2.4-6) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Fri, 08 May 2026 07:25:22 +0000
-
-mink-idl-compiler (0.2.4-5) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Fri, 08 May 2026 06:40:04 +0000
-
-mink-idl-compiler (0.2.4-4) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Thu, 07 May 2026 06:40:58 +0000
-
-mink-idl-compiler (0.2.4-3) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Wed, 06 May 2026 11:06:30 +0000
-
-mink-idl-compiler (0.2.4-2) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial commit
-
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Mon, 04 May 2026 09:31:56 +0000
-
-mink-idl-compiler (0.2.4-1) unstable; urgency=medium
-
-  [ Abhinaba Rakshit ]
-  * Initial packaging.
-
-  [ GitHub Service Bot ]
   * New upstream release
 
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Mon, 27 Apr 2026 07:00:35 +0000
+ -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 25 May 2026 09:12:39 +0000
