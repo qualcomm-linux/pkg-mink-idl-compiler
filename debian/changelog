@@ -1,4 +1,4 @@
-mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-1) resolute; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Initial Debian release with upstream v0.2.4
@@ -6,4 +6,4 @@ mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
   * Provides symlink to mink-idlc as /usr/lib/<triplet>/mink/bin/idlc
     to have backward-compatibility for older clients.
 
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 10 Jun 2026 09:12:39 +0000
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Thu, 11 Jun 2026 07:05:55 +0000
