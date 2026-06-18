@@ -1,12 +1,5 @@
 make-git-hash-optional
 remove-cargo-lock
-loosen-clap-version
-loosen-thiserror-version
 loosen-pest-version
 loosen-pest-derive-version
-loosen-convert-case-version
 loosen-prettyplease-version
-loosen-syn-version
-loosen-env-logger-version
-loosen-log-version
-loosen-rustc-version
