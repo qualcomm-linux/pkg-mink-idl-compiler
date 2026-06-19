@@ -13,6 +13,6 @@ Index: mink-idl-compiler/idlc_ast/Cargo.toml
  [dependencies]
  idlc_errors = {path = "../idlc_errors" }
 -pest = "2.7.9"
-+pest = ">= 2.7.4, < 2.9.0"
++pest = "2.8.4"
  pest_derive = "2.7.9"
- thiserror = "1.0.50"
+ thiserror = "1.0.59"
