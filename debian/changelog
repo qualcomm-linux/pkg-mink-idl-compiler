@@ -1,7 +1,9 @@
 mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
 
   [ Abhinaba Rakshit ]
-  * WIP — update changelog before next release
-  * New upstream release
+  * Initial Debian release with upstream v0.2.4
+  * Package mink-idl-compiler: CLI tool to compile Mink IDLs
+  * Provides symlink to mink-idlc as /usr/lib/<triplet>/mink/bin/idlc
+    to have backward-compatibility for older clients.
 
  -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Mon, 25 May 2026 09:12:39 +0000
