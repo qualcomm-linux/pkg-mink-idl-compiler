@@ -14,7 +14,7 @@ Upstream project is hosted here : https://github.com/quic/mink-idl-compiler
 
 ## Installation Instructions
 ```
-sudo dpkg -i mink-idl-compiler_x.deb
+sudo dpkg -i mink-idl-compiler_x_arm64.deb
 ```
 ## Usage
 
