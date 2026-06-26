@@ -1,4 +1,4 @@
-mink-idl-compiler (0.2.4-1) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-0qli+staging1) UNRELEASED; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Initial Debian release with upstream v0.2.4
