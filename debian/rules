@@ -9,6 +9,9 @@ export CARGO_PATH := /usr/share/cargo/bin/cargo
 	dh $@
 
 override_dh_auto_configure:
+	# Upstream's lockfiles pin crates.io versions, resolve against the
+	# Debian registry instead.
+	rm -f Cargo.lock tests/Cargo.lock
 	mkdir -p .cargo/
 	cp debian/config.toml .cargo/config.toml
 	dh_auto_configure
