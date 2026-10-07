@@ -1,2 +1,2 @@
-make-git-hash-optional
-loosen-convert-case-version
+make-git-hash-optional.patch
+adopt-convert-case-version.patch
