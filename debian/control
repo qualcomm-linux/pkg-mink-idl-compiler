@@ -5,23 +5,23 @@ Section: misc
 Priority: optional
 Rules-Requires-Root: no
 Build-Depends:
-	debhelper-compat (= 13),
-	dh-cargo,
-	cargo:native,
-	rustc:native (>= 1.81.0),
-	libstd-rust-dev,
-	librust-clap-4+default-dev (>= 4.5.4-~~),
-	librust-clap-4+derive-dev (>= 4.5.4-~~),
-	librust-pest-2+default-dev (>= 2.8.4-~~),
-	librust-pest-derive-2+default-dev (>= 2.8.4-~~),
-	librust-thiserror-1+default-dev (>= 1.0.59-~~),
-	librust-convert-case-0+default-dev (>= 0.11.0-~~),
-	librust-prettyplease-0.2+default-dev (>= 0.2.19-~~),
-	librust-syn-2+parsing-dev (>= 2.0.60-~~),
-	librust-env-logger-0+default-dev (>= 0.11.3-~~),
-	librust-log-0.4+default-dev (>= 0.4.21-~~),
-	librust-serial-test-dev,
-	librust-serde-test-dev
+ debhelper-compat (= 13),
+ dh-cargo,
+ cargo:native,
+ librust-clap-4+default-dev (>= 4.5.4-~~),
+ librust-clap-4+derive-dev (>= 4.5.4-~~),
+ librust-convert-case-0+default-dev (>= 0.11.0-~~),
+ librust-env-logger-0+default-dev (>= 0.11.3-~~),
+ librust-log-0.4+default-dev (>= 0.4.21-~~),
+ librust-pest-2+default-dev (>= 2.8.4-~~),
+ librust-pest-derive-2+default-dev (>= 2.8.4-~~),
+ librust-prettyplease-0.2+default-dev (>= 0.2.19-~~),
+ librust-serde-test-dev,
+ librust-serial-test-dev,
+ librust-syn-2+parsing-dev (>= 2.0.60-~~),
+ librust-thiserror-1+default-dev (>= 1.0.59-~~),
+ libstd-rust-dev,
+ rustc:native (>= 1.81.0),
 Homepage: https://github.com/quic/mink-idl-compiler
 Vcs-Git: https://github.com/qualcomm-linux/pkg-mink-idl-compiler -b qcom/debian/latest
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-mink-idl-compiler
@@ -34,4 +34,5 @@ Description: Mink IDL compile
  IPC interface code for secure, cross-domain communication.
  .
  This package contains the binary executable mink-idlc.
-Depends: ${misc:Depends}
+Depends:
+ ${misc:Depends},
