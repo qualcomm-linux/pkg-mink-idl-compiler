@@ -3,7 +3,7 @@ Maintainer: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
 Uploaders:
  Lukas Märdian <lukas.maerdian@oss.qualcomm.com>,
 Standards-Version: 4.6.2
-Section: misc
+Section: devel
 Build-Depends:
  debhelper-compat (= 13),
  dh-cargo,
@@ -22,14 +22,13 @@ Build-Depends:
  librust-thiserror-1+default-dev (>= 1.0.59-~~),
  libstd-rust-dev,
  rustc:native (>= 1.81.0),
-Homepage: https://github.com/quic/mink-idl-compiler
-Vcs-Git: https://github.com/qualcomm-linux/pkg-mink-idl-compiler -b qcom/debian/latest
+Homepage: https://github.com/qualcomm/mink-idl-compiler
+Vcs-Git: https://github.com/qualcomm-linux/pkg-mink-idl-compiler.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-mink-idl-compiler
 
 Package: mink-idl-compiler
 Architecture: arm64
-Section: devel
-Description: Mink IDL compile
+Description: Compiler for the Mink Interface Definition Language
  Compiler for MINK Interface Definition Language files used to generate
  IPC interface code for secure, cross-domain communication.
  .
