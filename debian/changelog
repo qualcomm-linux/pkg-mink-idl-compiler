@@ -2,7 +2,7 @@ mink-idl-compiler (0.2.4-0qli+staging2~) UNRELEASED; urgency=medium
 
   * Unreleased changes
 
- -- root <root@97c169566314>  Mon, 29 Jun 2026 09:59:57 +0000
+ -- Debusine Action Bot <noreply@bot.invalid>  Mon, 29 Jun 2026 09:59:57 +0000
 
 mink-idl-compiler (0.2.4-0qli+staging1) forky; urgency=medium
 
@@ -12,4 +12,4 @@ mink-idl-compiler (0.2.4-0qli+staging1) forky; urgency=medium
   * Provides symlink to mink-idlc as /usr/lib/<triplet>/mink/bin/idlc
     to have backward-compatibility for older clients.
 
- -- root <root@d40676b639d9>  Mon, 29 Jun 2026 09:55:30 +0000
+ -- Debusine Action Bot <noreply@bot.invalid>  Mon, 29 Jun 2026 09:55:30 +0000
