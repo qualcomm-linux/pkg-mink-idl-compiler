@@ -1,5 +1,3 @@
 make-git-hash-optional
 remove-cargo-lock
-loosen-pest-version
-loosen-pest-derive-version
 loosen-convert-case-version
