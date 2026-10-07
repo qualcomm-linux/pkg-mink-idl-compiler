@@ -35,3 +35,4 @@ Description: Compiler for the Mink Interface Definition Language
  This package contains the binary executable mink-idlc.
 Depends:
  ${misc:Depends},
+ ${shlibs:Depends},
