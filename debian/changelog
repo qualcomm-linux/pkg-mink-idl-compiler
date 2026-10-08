@@ -1,3 +1,9 @@
+mink-idl-compiler (0.2.4-0qli+staging3~) UNRELEASED; urgency=medium
+
+  * Unreleased changes
+
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 08 Oct 2026 09:32:51 +0000
+
 mink-idl-compiler (0.2.4-0qli+staging2) forky; urgency=medium
 
   [ Lukas Märdian ]
