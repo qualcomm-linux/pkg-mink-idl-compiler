@@ -28,8 +28,8 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	$(CARGO) build --release
-	# Generate Static-Built-Using before the test builds add dev-dependencies,
-	# stash it as dh_prep removes debian/*.substvars before dh_auto_install
+	# Generate (Static-)Built-Using before the test builds add dev-dependencies,
+	# stash them as dh_prep removes debian/*.substvars before dh_auto_install
 	/usr/share/cargo/bin/dh-cargo-built-using mink-idl-compiler
 	mv debian/mink-idl-compiler.substvars debian/cargo-built-using.substvars
 

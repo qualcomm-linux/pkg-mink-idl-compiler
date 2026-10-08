@@ -39,3 +39,5 @@ Depends:
  ${shlibs:Depends},
 Static-Built-Using:
  ${cargo:Static-Built-Using},
+Built-Using:
+ ${cargo:Built-Using},
