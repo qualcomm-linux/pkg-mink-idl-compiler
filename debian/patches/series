@@ -1,5 +1,4 @@
-make-git-hash-optional
-remove-cargo-lock
+make-git-hash-optional.patch
 loosen-pest-version
 loosen-pest-derive-version
 loosen-prettyplease-version

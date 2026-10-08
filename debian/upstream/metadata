@@ -1,0 +1,6 @@
+# See https://wiki.debian.org/UpstreamMetadata for more info/fields.
+
+Bug-Database: https://github.com/qualcomm/mink-idl-compiler/issues
+Bug-Submit: https://github.com/qualcomm/mink-idl-compiler/issues/new
+Repository-Browse: https://github.com/qualcomm/mink-idl-compiler
+Repository: https://github.com/qualcomm/mink-idl-compiler.git
