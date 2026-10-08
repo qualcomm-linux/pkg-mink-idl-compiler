@@ -1,8 +1,10 @@
-mink-idl-compiler (0.2.4-0qli+staging3~) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-0qli1~) UNRELEASED; urgency=medium
 
-  * Unreleased changes
+  * Rebuild for QLI.
+  * d/control: Add cargo:Built-Using substvar.
+  * d/gbp.conf: Update for QLI.
 
- -- Debusine Action Bot <noreply@bot.invalid>  Thu, 08 Oct 2026 09:32:51 +0000
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Thu, 08 Oct 2026 12:30:25 +0200
 
 mink-idl-compiler (0.2.4-0qli+staging2) forky; urgency=medium
 
