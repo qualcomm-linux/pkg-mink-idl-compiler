@@ -1,4 +1,4 @@
 make-git-hash-optional.patch
-loosen-pest-version
-loosen-pest-derive-version
-loosen-prettyplease-version
+loosen-pest-version.patch
+loosen-pest-derive-version.patch
+loosen-prettyplease-version.patch
