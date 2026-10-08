@@ -22,3 +22,9 @@ override_dh_auto_build:
 override_dh_auto_install:
 	install -d $(CURDIR)/debian/tmp/usr/bin
 	install -m 0755 target/release/idlc debian/tmp/usr/bin/mink-idlc
+
+	mkdir -p debian/tmp/usr/share/man/man1
+	help2man --no-info --version-string=$(DEB_VERSION_UPSTREAM) \
+	  --name="compiler for the Mink Interface Definition Language" \
+	  --output=debian/tmp/usr/share/man/man1/mink-idlc.1 \
+	  debian/tmp/usr/bin/mink-idlc

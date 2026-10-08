@@ -8,6 +8,7 @@ Build-Depends:
  debhelper-compat (= 13),
  dh-cargo,
  cargo:native,
+ help2man,
  librust-clap-4+default-dev (>= 4.5.4-~~),
  librust-clap-4+derive-dev (>= 4.5.4-~~),
  librust-convert-case-0+default-dev (>= 0.11.0-~~),
