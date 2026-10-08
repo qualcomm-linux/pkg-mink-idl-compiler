@@ -1,5 +1,6 @@
-mink-idl-compiler (0.2.4-0qli+staging2~bpo13+1~) UNRELEASED; urgency=medium
+mink-idl-compiler (0.2.4-0qli+staging2~bpo13+1) trixie; urgency=medium
 
+  [ Lukas Märdian ]
   * Backport for trixie.
   * d/control: Adopt B-Ds convert-case 0.6, pest 2.7.4, pest-derive 2.7.4,
     prettyplease 0.2.6
@@ -10,7 +11,7 @@ mink-idl-compiler (0.2.4-0qli+staging2~bpo13+1~) UNRELEASED; urgency=medium
   * Dropped patches (not needed on Trixie):
     - d/p/adopt-convert-case-version.patch
 
- -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Thu, 08 Oct 2026 11:44:11 +0200
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 08 Oct 2026 10:18:54 +0000
 
 mink-idl-compiler (0.2.4-0qli+staging2) forky; urgency=medium
 
